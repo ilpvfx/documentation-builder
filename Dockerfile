@@ -15,13 +15,11 @@ RUN apk add --update \
     wget \
     libpng-dev \
     freetype-dev \
+  && rm -rf /var/cache/apk/* \
   && pip2 install --upgrade pip \
   && pip3 install --upgrade pip \
-  && pip2 install virtualenv \
-  && pip3 install virtualenv \
-  && pip2 install sphinx \
-  && pip3 install sphinx \
-  && rm -rf /var/cache/apk/* \
+  && pip2 install virtualenv sphinx sphinx-rtd-theme breathe sphinx-js matplotlib numpy \
+  && pip3 install virtualenv sphinx sphinx-rtd-theme breathe sphinx-js matplotlib numpy \
   && wget http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz \
   && tar --strip-components=1 -xvf install-tl-unx.tar.gz \
   && ./install-tl --repository http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/ --profile=texlive.profile \
