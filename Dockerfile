@@ -13,6 +13,8 @@ RUN apk add --update \
     perl \
     xz \
     wget \
+    libpng-dev \
+    freetype-dev \
   && pip2 install --upgrade pip \
   && pip3 install --upgrade pip \
   && pip2 install virtualenv \
@@ -23,7 +25,7 @@ RUN apk add --update \
   && wget http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz \
   && tar --strip-components=1 -xvf install-tl-unx.tar.gz \
   && ./install-tl --repository http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/ --profile=texlive.profile \
-  && /usr/local/texlive/2019/bin/x86_64-linuxmusl/tlmgr install collection-latex collection-latexextra \
+  && /usr/local/texlive/2019/bin/x86_64-linuxmusl/tlmgr install collection-latex collection-latexextra latexmk collection-fontsrecommended lato \
   && cd /tmp && rm -rf *
 
 ENV PATH="/usr/local/texlive/2019/bin/x86_64-linuxmusl:${PATH}"
